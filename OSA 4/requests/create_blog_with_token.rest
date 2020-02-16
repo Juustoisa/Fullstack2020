@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZTQ2ZTg5MzU0MzBjNTc1M2M5MDFhNDciLCJpYXQiOjE1ODE3MTIxNDR9.NC7BMaJR4fju3IRGf3SMFiYOeSAAKYhaCRknyqavgR8
+
+{
+        "title": "Tokeni testaaja4",
+        "author": "Teemu Testaaja",
+        "url": "testataan edelleen.fi",
+        "likes": "0"
+}

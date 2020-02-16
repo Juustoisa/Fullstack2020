@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+        "title": "Testaajan viikonloppu",
+        "author": "Teemu Testaaja",
+        "url": "testibloki.testiploki2",
+        "likes": "0"
+}

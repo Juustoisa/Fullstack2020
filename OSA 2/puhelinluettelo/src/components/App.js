@@ -47,18 +47,18 @@ const App = () => {
                 contactService
                     .update(person.id, person)
                     .then(person => {
-                        setPersons(persons.concat(person))
-                        setStatusMessage(
-                            `${newName} was added to phonebook`
-                        )
                         setStatusType('success')
+                        setStatusMessage(
+                            `information for ${newName} was updated`
+                        )
                         setTimeout(() => {
                             setStatusMessage(null)
                         }, 5000)
                     }).catch(error => {
+                        console.log(error.response.data.error)
                         setStatusType('error')
                         setStatusMessage(
-                            `Unable to update '${newName}' number to phonebook.`
+                            error.response.data.error
                           )
                           setTimeout(() => {
                             setStatusMessage(null)
@@ -74,17 +74,18 @@ const App = () => {
                 .create(nameObject)
                 .then(nameObject => {
                     setPersons(persons.concat(nameObject.data))
+                    setStatusType('success')
                     setStatusMessage(
                         `${newName} was added to phonebook`
                     )
-                    setStatusType('success')
                     setTimeout(() => {
                         setStatusMessage(null)
                     }, 5000)
                 }).catch(error => {
+                    console.log(error.response.data.error)
                     setStatusType('error')
                     setStatusMessage(
-                        `Unable to add '${newName}' to phonebook.`
+                        error.response.data.error
                       )
                       setTimeout(() => {
                         setStatusMessage(null)
@@ -111,9 +112,10 @@ const App = () => {
                         setStatusMessage(null)
                     }, 5000)
                 }).catch(error => {
+                    console.log(error.response.data.error)
                     setStatusType('error')
                     setStatusMessage(
-                        `Information for '${props.name}' was already removed from phonebook.`
+                        error.response.data.error
                       )
                       setTimeout(() => {
                         setStatusMessage(null)
