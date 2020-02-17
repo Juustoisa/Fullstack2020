@@ -57,7 +57,7 @@ blogsRouter.delete('/:id', async (request, response) => {
     const targetBlog = await Blog.findById(request.params.id)
     const userInToken = await User.findById(decodedToken.id)
 
-    if (targetBlog.user.toString() === userInToken.toString()) {
+    if (targetBlog.user.toString() !== userInToken.id.toString()) {
         return response.status(401).json({ error: 'this user is unable to delete this blog' })
     }
     await Blog.findByIdAndRemove(request.params.id)
