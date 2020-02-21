@@ -5,10 +5,15 @@ const notificationAtStart = {
 
 const initialState = notificationAtStart
 
-export const setNewNotification = (message) => {
-    return {
-        type: "SET_NEW",
-        notification: message
+export const setNewNotification = (message, timer) => {
+    return async dispatch => {
+        await dispatch ({
+            type: "SET_NEW",
+            notification: message
+        })
+        setTimeout(() => dispatch ({
+            type: "HIDE_NOTIFICATION"
+        }), timer * 1000)
     }
   }
 

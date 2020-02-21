@@ -6,7 +6,7 @@ import { setNewNotification } from '../reducers/notificationReducer'
 const AnecdoteList = () => {
     const aFilter = useSelector(state => state.filter.filter)
     let anecdotes = useSelector(state => state.anecdotes).filter(function (anecdote) {
-        return String(anecdote.content).includes(aFilter)
+        return String(anecdote.content.toLowerCase()).includes(aFilter.toLowerCase())
     }).sort(function (a, b) {
         return b.votes - a.votes
     })
@@ -15,10 +15,7 @@ const AnecdoteList = () => {
 
     const vote = (anecdote) => {
         dispatch(createVote(anecdote.id))
-        dispatch(setNewNotification('You voted for "' + anecdote.content + '".'))
-        setTimeout(() => {
-            dispatch({ type: 'HIDE_NOTIFICATION' })
-        }, 5000)
+        dispatch(setNewNotification('You voted for "' + anecdote.content + '".', 5))
     }
     return (
         <div>
