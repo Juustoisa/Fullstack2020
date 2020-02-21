@@ -2,16 +2,20 @@ const notificationAtStart = {
     notification: null
 }
 
-
 const initialState = notificationAtStart
+let timeoutIdentifier = null
 
 export const setNewNotification = (message, timer) => {
     return async dispatch => {
+        clearTimeout()
         await dispatch ({
             type: "SET_NEW",
             notification: message
         })
-        setTimeout(() => dispatch ({
+        if(timeoutIdentifier){
+            clearTimeout(timeoutIdentifier)
+        }
+        timeoutIdentifier = setTimeout(() => dispatch ({
             type: "HIDE_NOTIFICATION"
         }), timer * 1000)
     }
