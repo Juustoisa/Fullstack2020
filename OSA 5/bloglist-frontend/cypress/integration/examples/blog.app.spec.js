@@ -34,14 +34,14 @@ describe('Blog app', function () {
     })
   })
 
-  describe('When logged in', function () {
+  describe.only('When logged in', function () {
     beforeEach(function () {
       cy.get('#usernameID').type('mrT')
       cy.get('#passwordID').type('testeri')
       cy.get('#loginButton').click()
       cy.wait(100)
     })
-
+/*
     it('A blog can be created, liked and deleted', function () {
       cy.contains('Create new blog').click()
       cy.get('#titleId').type('This cypress thing is pretty cool')
@@ -49,7 +49,7 @@ describe('Blog app', function () {
       cy.get('#urlId').type('www.readthedocumentation.com')
       cy.wait(200)
       cy.get('#submitBlog').click()
-      cy.wait(500)
+      cy.wait(5000)
       cy.contains('This cypress thing is pretty cool')
       cy.get('#viewID').click()
       cy.contains('www.readthedocumentation.com')
@@ -65,7 +65,7 @@ describe('Blog app', function () {
         .should('not.exist')
       cy.contains('Teemu Testaaja logged in')
     })
-/*
+*/
     it('blogs are ordered based on like count', function () {
       cy.contains('Create new blog').click()
       cy.get('#titleId').type('This cypress thing is pretty cool')
@@ -79,14 +79,12 @@ describe('Blog app', function () {
       cy.get('#urlId').type('www.alsopreparetogooglealot.com')
       cy.get('#submitBlog').click()
       cy.wait(500)
-
-      cy.request('GET', 'http://localhost:3001/api/blogs')
-      .then((response) => {
-          console.log(response)
-      })
-      cy.wait(500)
+      cy.get('#closedContainerID').eq(0).contains('cypress thing')
+      cy.get('#viewID').eq(0).click()
+      cy.get('#viewID').eq(0).click()
+      cy.get('button').eq(8).click()
+      cy.get('#openContainerID').first()
+      cy.contains('test took some')
     })
-*/
-  
   })
 })

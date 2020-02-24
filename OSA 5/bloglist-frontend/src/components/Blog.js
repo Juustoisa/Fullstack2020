@@ -53,7 +53,7 @@ const Blog = ({ blog, sort, setStatusType, setStatusMessage }) => {
 
   if (moreInfo) {
     return (
-      <div id='blogContainerID' style={blogStyle}>
+      <div id='openContainerID' style={blogStyle}>
         <div>{blog.title} <button  onClick={handleMoreInfo}>Hide</button></div>
         <div>{blog.url}</div>
         Likes: <div id='likeAmountID'>{likeAmount}</div> <button id='likeID' onClick={handleLike}>Like</button>
@@ -63,7 +63,7 @@ const Blog = ({ blog, sort, setStatusType, setStatusMessage }) => {
     )
   } else {
     return (
-      <div style={blogStyle}>
+      <div id='closedContainerID' style={blogStyle}>
         <div>{blog.title} {blog.author} <button id='viewID' onClick={handleMoreInfo}>View</button></div>
       </div>
     )
